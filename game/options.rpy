@@ -151,7 +151,7 @@ define config.save_directory = "Hyatory-1693068542"
 ##
 ## El icono mostrado en la barra de tareas.
 
-define config.window_icon = "gui/window_icon.png"
+define config.window_icon = "gui/detective_hat.png"
 
 
 ## Configuración de 'Build' ####################################################
