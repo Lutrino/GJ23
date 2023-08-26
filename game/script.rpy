@@ -4,11 +4,32 @@
 
 define e = Character("Eileen")
 
+define started = False
 
 # El juego comienza aquí.
 
+label splashscreen:
+    scene black
+    with Pause(1)
+
+    play music "audio/MUSIC02.mp3" fadeout 1.0 noloop
+
+    show text "KochCorp Presents..." with dissolve
+    with Pause(3)
+
+    hide text with dissolve
+    with Pause(1)
+
+    $ started = True
+    return
+
 label start:
 
+    if not started:
+        jump splashscreen
+
+    stop music fadeout 1.0
+    
     # Muestra una imagen de fondo: Aquí se usa un marcador de posición por
     # defecto. Es posible añadir un archivo en el directorio 'images' con el
     # nombre "bg room.png" or "bg room.jpg" para que se muestre aquí.
