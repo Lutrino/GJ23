@@ -297,38 +297,58 @@ screen navigation():
 
         if main_menu:
 
-            textbutton _("Comenzar") action Start()
+            # textbutton _("Comenzar") action Start()
+
+            imagebutton idle "btn_start.png" hover "btn_start.png" xalign 0.5 yalign 0.5 action Start()
 
         else:
+            
+            # textbutton _("Historial") action ShowMenu("history")
 
-            textbutton _("Historial") action ShowMenu("history")
+            imagebutton idle "btn_history.png" hover "btn_history.png" xalign 0.5 yalign 0.5 action ShowMenu("history")
 
-            textbutton _("Guardar") action ShowMenu("save")
+            # textbutton _("Guardar") action ShowMenu("save")
 
-        textbutton _("Cargar") action ShowMenu("load")
+            imagebutton idle "btn_save.png" hover "btn_save.png" xalign 0.5 yalign 0.5 action ShowMenu("save")
 
-        textbutton _("Opciones") action ShowMenu("preferences")
+        # textbutton _("Cargar") action ShowMenu("load")
+
+        imagebutton idle "btn_load.png" hover "btn_load.png" xalign 0.5 yalign 0.5 action ShowMenu("load")
+
+        # textbutton _("Opciones") action ShowMenu("preferences")
+
+        imagebutton idle "btn_options.png" hover "btn_options.png" xalign 0.5 yalign 0.5 action ShowMenu("preferences")
 
         if _in_replay:
 
-            textbutton _("Finaliza repetición") action EndReplay(confirm=True)
+            # textbutton _("Finaliza repetición") action EndReplay(confirm=True)
+
+            imagebutton idle "btn_finish_rep.png" hover "btn_finish_rep.png" xalign 0.5 yalign 0.5 action EndReplay(confirm=True)
 
         elif not main_menu:
 
-            textbutton _("Menú principal") action MainMenu()
+            # textbutton _("Menú principal") action MainMenu()
 
-        textbutton _("Acerca de") action ShowMenu("about")
+            imagebutton idle "btn_menu.png" hover "btn_menu.png" xalign 0.5 yalign 0.5 action MainMenu()
+
+        # textbutton _("Acerca de") action ShowMenu("about")
+
+        imagebutton idle "btn_about.png" hover "btn_about.png" xalign 0.5 yalign 0.5 action ShowMenu("about")
 
         if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
             ## La ayuda no es necesaria ni relevante en dispositivos móviles.
-            textbutton _("Ayuda") action ShowMenu("help")
+            # textbutton _("Ayuda") action ShowMenu("help")
+
+            imagebutton idle "btn_help.png" hover "btn_help.png" xalign 0.5 yalign 0.5 action ShowMenu("help")
 
         if renpy.variant("pc"):
 
             ## El botón de salida está prohibido en iOS y no es necesario en
             ## Android y Web.
-            textbutton _("Salir") action Quit(confirm=not main_menu)
+            # textbutton _("Salir") action Quit(confirm=not main_menu)
+
+            imagebutton idle "btn_exit.png" hover "btn_exit.png" xalign 0.5 yalign 0.5 action Quit(confirm=not main_menu)
 
 
 style navigation_button is gui_button
@@ -368,11 +388,12 @@ screen main_menu():
         vbox:
             style "main_menu_vbox"
 
-            text "[config.name!t]":
-                style "main_menu_title"
+            image "gui/overlay/game_logo.png" xalign 1.0 yalign 1.0 xoffset -16 yoffset -16
+            # text "[config.name!t]":
+            #     style "main_menu_title"
 
-            text "[config.version]":
-                style "main_menu_version"
+            # text "[config.version]":
+            #     style "main_menu_version"
 
 
 style main_menu_frame is empty
@@ -504,7 +525,7 @@ style game_menu_navigation_frame:
     yfill True
 
 style game_menu_content_frame:
-    left_margin 32
+    left_margin 260
     right_margin 16
     top_margin 8
 

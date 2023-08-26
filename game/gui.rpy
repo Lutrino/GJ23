@@ -9,7 +9,7 @@ init offset = -2
 ## Llamando 'qui.init' se resetean los estilos a los valores por defecto y se
 ## establecen la anchura y altura del juego.
 init python:
-    gui.init(1024, 1024)
+    gui.init(1280, 720)
 
 ## Habilitar comprobaciones de propiedades no válidas o inestables en pantallas
 ## o transformaciones.
@@ -87,7 +87,7 @@ define gui.title_text_size = 40
 ## Menú principal y menús del juego ############################################
 
 ## Imágenes del menú principal y menús del juego.
-define gui.main_menu_background = "images/image_main.jpg"
+define gui.main_menu_background = "images/image_main.png"
 define gui.game_menu_background = "gui/game_menu.png"
 
 
