@@ -31,9 +31,10 @@ label splashscreen:
     with Pause(1)
 
     show logo_hyatory_white at truecenter with dissolve
-    with Pause(3)
+    with Pause(4)
 
     hide logo_hyatory_white with dissolve
+    with Pause(1.2)
 
     $ started = True
     return
