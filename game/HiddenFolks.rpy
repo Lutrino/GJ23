@@ -1,11 +1,10 @@
 # hf - HiddenFolks (поиск предметов)
 init 1:
-    $ hf_init("bg callejon", 5,
-        ("beer", 500, 600, _("Oso")),
-        ("elf", 400, 600, _("Elfo")),
-        ("flowers", 200, 600, _("Flores")),
-        ("skull", 600, 600, _("Calavera")),
-        ("sprite", 300, 600, _("Gaseosa")),
+    $ hf_init("bg callejon2", 5,
+        ("cuchillo", 580, 439, _("Cuchillo")),
+        ("barreta", 549, 208, _("Barreta")),
+        ("pisadas", 648, 0, _("Huellas")),
+        ("sombrero", 769, 469, _("Sombrero")),
         mouse=True,
         inventory=False,
         hint=False,
@@ -95,7 +94,7 @@ init python:
 
 # ВНУТРЕННИЕ ПЕРЕМЕННЫЕ
     # время, за которое нужно собрать предметы
-    hf_time = 5
+    hf_time = 10
 
     # время, которое нужно обнулить для анимации
     hf_bar = 100

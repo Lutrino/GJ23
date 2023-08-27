@@ -20,9 +20,7 @@
 
     values_list = []
     temp = []
-    # объявляем картинки-карточки
-    # должны быть в формате "images/card_*.png"
-    # обязательны "card_back.png" и "card_empty.png"
+
     for fn in renpy.list_files():
         if fn.startswith("images/card_") and fn.endswith((".png")):
             name = fn[12:-4]
@@ -52,8 +50,13 @@
 
 # экран игры
 screen memo_scr:
-    # таймер    
-    timer 1.0 action If (memo_timer > 1, SetVariable("memo_timer", memo_timer - 1), Jump("memo_game_lose") ) repeat True
+    # таймер 
+
+    if flg_memo == 1:
+        timer 1.0 action If (memo_timer > 1, SetVariable("memo_timer", memo_timer - 1), Jump("memo_game_lose") ) repeat True
+    else: 
+        timer 1.0 action If (memo_timer > 1, SetVariable("memo_timer", memo_timer - 1), Jump("memo_game_lose2") ) repeat True
+
     # поле
     grid ww hh:
         align (.5, .5) # в центре
@@ -95,6 +98,7 @@ label memoria_game:
             else:
                 cards_list.append ( {"c_number":i, "c_value": values_list[i], "c_chosen":False} )   
     $ memo_timer = max_time
+    $ flg_memo = flg
     # показать экран с игрой
     show screen memo_scr
     # основной цикл игры
@@ -143,10 +147,61 @@ label memo_game_win:
     centered "{size=36}{b}Todo indica que es una falla del sistema!{/b}{/size}"
     jump memoria_win
 
-# пример запуска
-# label start:
-    # scene black
-    # $ max_time = 60
-    # $ ww, hh = 4, 4
-    # call memoria_game
-    # return
+label memoria_game2:
+    $ cards_init()
+    $ cards_list = []
+    python:
+        for i in range (0, len(values_list) ):
+            if values_list[i] == 'empty':
+                cards_list.append ( {"c_number":i, "c_value": values_list[i], "c_chosen":True} )   
+            else:
+                cards_list.append ( {"c_number":i, "c_value": values_list[i], "c_chosen":False} )   
+    $ memo_timer = max_time
+    $ flg_memo = flg
+    # показать экран с игрой
+    show screen memo_scr
+    # основной цикл игры
+    label memo_game_loop2:
+        $ can_click = True
+        $ turned_cards_numbers = []
+        $ turned_cards_values = []
+        $ turns_left = max_c
+        label turns_loop2:
+            if turns_left > 0:
+                $ result = ui.interact()
+                $ memo_timer = memo_timer
+                $ turned_cards_numbers.append (cards_list[result]["c_number"])
+                $ turned_cards_values.append (cards_list[result]["c_value"])
+                $ turns_left -= 1
+                jump turns_loop2
+        # предотвращаем открытие лишних карточек
+        $ can_click = False
+        if turned_cards_values.count(turned_cards_values[0]) != len(turned_cards_values):
+            $ renpy.pause (wait, hard = True)
+            python:
+                for i in range (0, len(turned_cards_numbers) ):
+                    cards_list[turned_cards_numbers[i]]["c_chosen"] = False
+        else:
+            $ renpy.pause (wait, hard = True)
+            python: 
+                for i in range (0, len(turned_cards_numbers) ):
+                    cards_list[turned_cards_numbers[i]]["c_value"] = 'empty'
+                for j in cards_list:
+                    if j["c_chosen"] == False:
+                        renpy.jump ("memo_game_loop2")
+                renpy.jump ("memo_game_win2")
+        jump memo_game_loop2
+    
+# проигрыш
+label memo_game_lose2:
+    hide screen memo_scr
+    $ renpy.pause (0.1, hard = True)
+    centered "{size=36}Esto tiene solucion?!.{/size}"
+    jump juego2b
+
+# выигрыш
+label memo_game_win2:
+    hide screen memo_scr
+    $ renpy.pause (0.1, hard = True)
+    centered "{size=36}{b}Porque? Como es esto posible?!{/b}{/size}"
+    jump memoria_win2

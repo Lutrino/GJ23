@@ -85,12 +85,11 @@ label start:
     narr "Pero algo le llama la atención."
 label juego:
     #Inicio del Minijuego_Busqueda
-    $ hf_init("bg callejon", 5,
-        ("beer", 100, 200, _("Oso")),
-        ("elf", 800, 200, _("Elfo")),
-        ("flowers", 300, 200, _("Flores")),
-        ("skull", 700, 200, _("Calavera")),
-        ("sprite", 500, 200, _("Gaseosa")),
+    $ hf_init("bg callejon2", 4,
+        ("cuchillo", 580, 439, _("Cuchillo")),
+        ("barreta", 549, 208, _("Barreta")),
+        ("pisadas", 648, 0, _("Huellas")),
+        ("sombrero", 769, 469, _("Sombrero")),
         
         mouse=True,
         inventory=False,
@@ -102,7 +101,7 @@ label juego:
     $ hf_bg()
     with dissolve
 
-    centered "{size=+24}Haber si encontras estos 5 Cosos Milenarios.\nManejate!"
+    centered "{size=+24}Investiga la escena del crimen.\nSuerte!"
 
     # Inicio del HideF
     $ hf_start()
@@ -112,18 +111,17 @@ label juego:
 
     # Resultado / Gestion del resultado del minijuego
     if hf_return == 0:
-        centered "{size=+24}Lo hiciste Sorete!"
+        centered "{size=+24}Consegui Todas las pistas!"
     else:
-        centered "{size=+24}GAME OVER\n Te faltaron: [hf_return]."
+        centered "{size=+24}Todavia hay mas pistas\n Tengo que seguir buscando!."
     if hf_return > 0:
         jump juego
 
 
     $ hf_hide()
+    hide epsilon buscando
     with dissolve
     #Fin del Minijuego_busqueda
-    hide epsilon buscando
-    with fade
 
     menu:
         "Las marcas en el cuerpo son perfectas y precisas.":
@@ -134,6 +132,8 @@ label juego:
             jump ep2_1
 
         "Hay un rastro de pisadas particulares en el suelo.":
+            show epsilon2 at left
+            with dissolve
             epsilon "Frente a nosotros, un sendero de huellas se despliega en el suelo, cada marca un testimonio silencioso de los eventos que ocurrieron en este lugar."
             epsilon "Un escalofrío recorre mi circuito al identificar estas huellas particulares: son el distintivo rastro del calzado reglamentario de un agente de la ley, un... policía."
             epsilon "Pero aquí está la enigma que desafía la lógica: no puede haber contaminación de esta escena del crimen, la protección de la integridad es inquebrantable."
@@ -170,10 +170,13 @@ label juego2:
     centered "{size=+24}No hay tiempo que perder, tengo que unir las pistas.\nEmpecemos!"
     $ max_time = 30
     $ ww, hh = 6, 4
+    $ flg = 1
+    play music "<from 5 to 35>audio/bg/15 - Demolition Runner.mp3" fadeout 0.5 volume 0.5
     call memoria_game
     return
 
 label memoria_win:
+            play music "audio/bg/01 - Arrival in Utopia.mp3" fadeout 1.0 loop
             show epsilon reporte2 at right
             with dissolve
             narr "La mente del detective se llenó de interrogantes mientras se enfrentaba a esta nueva realidad, una en la que las fronteras entre lo orgánico y lo artificial se desdibujaban de manera perturbadora."
@@ -187,6 +190,7 @@ label memoria_win:
             jump ep3_1
 
 label memoria_lose:
+            play music "audio/bg/01 - Arrival in Utopia.mp3" fadeout 1.0 loop
             show epsilon reporte1 at left
             with dissolve
             narr "Las evidencias que inicialmente señalaban hacia una máquina habían sido manipuladas cuidadosamente por una mente humana. Las huellas digitales digitales que creía únicas resultaron ser un engaño elaborado, y la aparente precisión del asesinato se convirtió en una artimaña calculada para ocultar la verdad."
@@ -210,9 +214,25 @@ label ep3_2:
 label ep2_2:
     epsilon "..."
     epsilon "Es hora de regresar a la oficina y analizar las pruebas."
-
+    scene bg oficina
     narr "Epsilon regresa a la oficina y analiza las pruebas."
 
+label juego2b:
+    centered "{size=+24}No hay tiempo que perder, tengo que unir las pistas.\nEmpecemos!"
+    $ max_time = 30
+    $ ww, hh = 6, 4
+    $ flg = 2
+    play music "<from 5 to 35>audio/bg/15 - Demolition Runner.mp3" fadeout 0.5 volume 0.5
+    call memoria_game2 from _call_memoria_game
+    return
+
+label memoria_win2:
+    play music "audio/bg/01 - Arrival in Utopia.mp3" fadeout 1.0 loop
+    narr "Tras incansables horas de meticulosa investigación sobre el asesinato, Epsilon, finalmente identifica una perspicaz pista que podría arrojar luz sobre el misterio y revelar al culpable."
+    show epsilon reporte1 at left
+    with dissolve
+    
+    epsilon "La única posible solución, que encontré, fue que el detective que asesinó al sujeto... sea un humano. La idea me aterraba, pero las pruebas apuntaban ineludiblemente hacia esa conclusión."
     return
 
 
