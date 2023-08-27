@@ -164,11 +164,6 @@ label ep2_1:
     
     hide epsilon2
     with fade
-<<<<<<< Updated upstream
-
-    menu:
-        "Todo indica que es una falla del sistema":
-=======
     
 label juego2:
 
@@ -178,7 +173,6 @@ label juego2:
     call memoria_game
 
 label memoria_win:
->>>>>>> Stashed changes
             show epsilon reporte2 at right
             with dissolve
             narr "La mente del detective se llenó de interrogantes mientras se enfrentaba a esta nueva realidad, una en la que las fronteras entre lo orgánico y lo artificial se desdibujaban de manera perturbadora."
@@ -191,11 +185,7 @@ label memoria_win:
             narr "El detective estaba decidido a desenmarañar la verdad y descubrir si un artífice oculto estaba tejiendo esta compleja tela de intriga."
             jump ep3_1
 
-<<<<<<< Updated upstream
-        "Parece ser que un grupo está detrás de este caso":
-=======
 label memoria_lose:
->>>>>>> Stashed changes
             show epsilon reporte1 at left
             with dissolve
             narr "Las evidencias que inicialmente señalaban hacia una máquina habían sido manipuladas cuidadosamente por una mente humana. Las huellas digitales digitales que creía únicas resultaron ser un engaño elaborado, y la aparente precisión del asesinato se convirtió en una artimaña calculada para ocultar la verdad."
@@ -204,12 +194,16 @@ label memoria_lose:
             narr "En el mundo del crimen, las estrategias de la astucia humana demostraban ser más intrigantes y retorcidas que cualquier maraña tecnológica."
             narr "La dualidad de la naturaleza humana, capaz de crear y destruir, de construir y engañar, se revelaba ante Epsilon con una claridad que desafiaba su programación. La mente del detective robótico se sumergía en una exploración en la que la línea divisoria entre la inteligencia artificial y la humana se volvía cada vez más borrosa."
             narr "A medida que desenmarañaba los hilos de esta trama, Epsilon comprendía que la búsqueda de la verdad lo llevaría a lugares inexplorados, donde los conceptos de ingeniería y psicología convergían en un ballet complejo de intenciones y maquinaciones."
-            
+            jump ep3_2
 
 label ep3_1:
     narr "El detective decidió enfrentar este desafío con toda la astucia y experiencia que había acumulado a lo largo de su carrera en sistemas y programación. Con su mente analítica, comenzó a sumergirse en el código que sostenía el sistema en cuestión. Cada línea de código, cada algoritmo, era un puzle por resolver."
     narr "Como un programador experimentado, sabía que los errores en el código podían ser sutiles y esquivos. Comenzó a rastrear las secuencias de comandos, siguiendo las pistas digitales como un rastro de migas de pan en un laberinto virtual. Utilizó herramientas de depuración y análisis para examinar minuciosamente cada interacción entre las partes del sistema."
     narr "Pronto, sus esfuerzos dieron frutos. Descubrió un patrón de acceso no autorizado que parecía ser la puerta de entrada para la falla del sistema. Profundizó en esta vulnerabilidad, desentrañando capa tras capa de códigos maliciosos cuidadosamente ocultos. Cada avance lo acercaba más a la verdad detrás de la conspiración tecnológica que se desplegaba."
+    return
+
+label ep3_2:
+    narr "pasaron cosas"
     return
 
 label ep2_2:

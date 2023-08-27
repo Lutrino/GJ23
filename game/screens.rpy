@@ -581,7 +581,7 @@ screen about():
             if gui.about:
                 text "[gui.about!t]\n"
 
-            text _("Hecho con {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+            text _("Hecho con {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\nDiseñado por el equipo KochCorp para la Patagonia GameJam 2023")
 
 
 style about_label is gui_label
