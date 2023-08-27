@@ -69,13 +69,11 @@ label start:
 
     epsilon "Agradezco tu notificación, sistema. ¿Puedes brindarme más detalles sobre la víctima?"
     hide epsilon celular
-    with fade
     scene bg callejon
-    show epsilon buscando at right
-    with dissolve
     
     Sistema_seguridad "Federico no presenta antecedentes conocidos en nuestras bases de datos. Hasta ahora, no hay registros de actividad delictiva ni asociaciones relevantes."
-
+    show epsilon buscando at right
+    with dissolve
     epsilon "Entiendo. Prosigue con los detalles sobre la escena del crimen, por favor."
     Sistema_seguridad "La ubicación del homicidio es un callejón poco frecuentado. El cuerpo de Federico yace en posición supina en el suelo. Su ropa muestra signos de deterioro y hay indicios de lucha. La expresión facial de Federico sugiere sorpresa o desconcierto."
 
@@ -109,7 +107,7 @@ label juego:
     with dissolve
 
     centered "{size=+24}Investiga la escena del crimen.\nSuerte!"
-
+    play music "<from 5 to 35>audio/bg/16 - Corporate Power.mp3" fadeout 0.5 volume 0.5
     # Inicio del HideF
     $ hf_start()
 
@@ -132,6 +130,8 @@ label juego:
 
     menu:
         "Las marcas en el cuerpo son perfectas y precisas.":
+            show epsilon2 at left
+            with dissolve
             epsilon "Las marcas en el cuerpo exhiben una meticulosidad que roza la perfección, cada trazo y contorno son precisos como si hubieran sido trazados por la mano de un maestro artesano."
             epsilon "No queda espacio para la duda, estas marcas indiscutiblemente han sido impresas en la piel por una fuerza mecánica de una exactitud inhumana."
             epsilon "Sin embargo, un dilema se cierne en el aire, desafiando la lógica misma: ¿cómo puede ser posible? ¿Cómo puede un ser sin emociones ni intenciones cometer un crimen?"
@@ -179,7 +179,7 @@ label juego2:
     $ ww, hh = 6, 4
     $ flg = 1
     play music "<from 5 to 35>audio/bg/15 - Demolition Runner.mp3" fadeout 0.5 volume 0.5
-    call memoria_game
+    call memoria_game from _call_memoria_game_1
     return
 
 label memoria_win:
@@ -206,17 +206,13 @@ label memoria_lose:
             narr "En el mundo del crimen, las estrategias de la astucia humana demostraban ser más intrigantes y retorcidas que cualquier maraña tecnológica."
             narr "La dualidad de la naturaleza humana, capaz de crear y destruir, de construir y engañar, se revelaba ante Epsilon con una claridad que desafiaba su programación. La mente del detective robótico se sumergía en una exploración en la que la línea divisoria entre la inteligencia artificial y la humana se volvía cada vez más borrosa."
             narr "A medida que desenmarañaba los hilos de esta trama, Epsilon comprendía que la búsqueda de la verdad lo llevaría a lugares inexplorados, donde los conceptos de ingeniería y psicología convergían en un ballet complejo de intenciones y maquinaciones."
-            jump ep3_2
+            jump final_conflicto
 
 label ep3_1:
     narr "El detective decidió enfrentar este desafío con toda la astucia y experiencia que había acumulado a lo largo de su carrera en sistemas y programación. Con su mente analítica, comenzó a sumergirse en el código que sostenía el sistema en cuestión. Cada línea de código, cada algoritmo, era un puzle por resolver."
     narr "Como un programador experimentado, sabía que los errores en el código podían ser sutiles y esquivos. Comenzó a rastrear las secuencias de comandos, siguiendo las pistas digitales como un rastro de migas de pan en un laberinto virtual. Utilizó herramientas de depuración y análisis para examinar minuciosamente cada interacción entre las partes del sistema."
     narr "Pronto, sus esfuerzos dieron frutos. Descubrió un patrón de acceso no autorizado que parecía ser la puerta de entrada para la falla del sistema. Profundizó en esta vulnerabilidad, desentrañando capa tras capa de códigos maliciosos cuidadosamente ocultos. Cada avance lo acercaba más a la verdad detrás de la conspiración tecnológica que se desplegaba."
-    return
-
-label ep3_2:
-    narr "pasaron cosas"
-    return
+    jump final_lose
 
 label ep2_2:
     epsilon "..."
@@ -240,9 +236,30 @@ label memoria_win2:
     with dissolve
     
     epsilon "La única posible solución, que encontré, fue que el detective que asesinó al sujeto... sea un humano. La idea me aterraba, pero las pruebas apuntaban ineludiblemente hacia esa conclusión."
+    jump final_conflicto
+
+label final_conflicto:
+    scene black
+    with Pause(1)
+
+    play music "audio/bg/10 - A Light in the Dark.mp3" fadeout 1.0 noloop
+
+    show text "Hay un secreto detras de los K0-CH..." with dissolve
+    with Pause(5)
+
+    hide text with dissolve
+    with Pause(2)
     return
+    
 
+label final_lose:
+    scene black
+    with Pause(1)
+    play music "audio/bg/10 - A Light in the Dark.mp3" fadeout 1.0 noloop
+    show text "El bug fue resuelto... pero... Fue por un accidente?" with dissolve
+    with Pause(5)
 
+    hide text with dissolve
+    with Pause(2)
     # Finaliza el juego:
-
     return
