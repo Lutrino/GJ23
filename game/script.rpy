@@ -34,7 +34,7 @@ label splashscreen:
     with Pause(4)
 
     hide logo_hyatory_white with dissolve
-    with Pause(1.2)
+    with Pause(0.75)
 
     $ started = True
     return
