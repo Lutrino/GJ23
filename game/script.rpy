@@ -53,7 +53,7 @@ label start:
     scene sistema
     
     narr "Hyatory es segura gracias a la vigilancia automatizada. Las calles son seguras y la delincuencia es mínima, permitiendo a los habitantes disfrutar de la vida urbana."
-    narr "Este nivel excepcional de seguridad y tranquilidad que se respira en cada rincón de Hyatory es gracias a la introducción de un modelo de robot único(K0-CH)."
+    narr "Este nivel excepcional de seguridad y tranquilidad que se respira en cada rincón de Hyatory es gracias a la introducción de un modelo de robot único (K0-CH)."
     narr "Equipados con Inteligencia Artificial de última generación, estos autómatas se han convertido en los pilares fundamentales de la seguridad y la resolución de crímenes en la ciudad."
 
     # Cambio de escena
