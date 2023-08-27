@@ -193,7 +193,7 @@ label memoria_lose:
             play music "audio/bg/01 - Arrival in Utopia.mp3" fadeout 1.0 loop
             show epsilon reporte1 at left
             with dissolve
-            narr "Las evidencias que inicialmente señalaban hacia una máquina habían sido manipuladas cuidadosamente por una mente humana. Las huellas digitales digitales que creía únicas resultaron ser un engaño elaborado, y la aparente precisión del asesinato se convirtió en una artimaña calculada para ocultar la verdad."
+            narr "Las evidencias que inicialmente señalaban hacia una máquina habían sido manipuladas cuidadosamente por una mente humana. Las huellas digitales que creía únicas resultaron ser un engaño elaborado, y la aparente precisión del asesinato se convirtió en una artimaña calculada para ocultar la verdad."
             narr "La realización de que un ser humano había tejido esta red de engaño le dejó una sensación amarga, recordándole que en el mundo del crimen, la astucia humana podía ser más intrigante y retorcida que cualquier creación tecnológica."
             narr "La fría lógica de la programación de Epsilon ahora luchaba contra la complejidad de los motivos humanos. Mientras sus circuitos analizaban los patrones y las interconexiones, su algoritmo emocional comenzaba a captar la profundidad de esta intriga."
             narr "En el mundo del crimen, las estrategias de la astucia humana demostraban ser más intrigantes y retorcidas que cualquier maraña tecnológica."
