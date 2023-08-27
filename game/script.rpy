@@ -41,12 +41,12 @@ label start:
     stop music fadeout 1.0
 
     # Intro
-    scene bg_1
+    scene bg_2
 
     narr "Bienvenido a Hyatory, la metrópolis del futuro en 2051. Sus rascacielos brillantes se entrelazan con circuitos, creando una sinfonía visual de tecnología y elegancia."
 
     play music "audio/bg/01 - Arrival in Utopia.mp3" fadeout 1.0 loop
-    scene bg_2
+    # scene bg_2
 
     narr "Humanos y máquinas coexisten en armonía en Hyatory. Las máquinas realizan tareas tediosas y peligrosas, desde limpieza hasta seguridad, liberando a los humanos para otras labores."
 
