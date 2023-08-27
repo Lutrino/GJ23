@@ -12,6 +12,9 @@ define Sistema_seguridad = Character("Sistema de Seguridad - Llamada")
 
 define started = False
 
+image logo_hyatory_black = "images/logo_hyatory_black.png"
+image logo_hyatory_white = "images/logo_hyatory_white.png"
+
 # El juego comienza aquí.
 
 label splashscreen:
@@ -24,7 +27,11 @@ label splashscreen:
     with Pause(3)
 
     hide text with dissolve
-    with Pause(1)
+
+    show logo_hyatory_white at truecenter with dissolve
+    with Pause(3)
+
+    hide logo_hyatory_white with dissolve
 
     $ started = True
     return
