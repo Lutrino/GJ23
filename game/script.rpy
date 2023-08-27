@@ -171,6 +171,7 @@ label juego2:
     $ max_time = 30
     $ ww, hh = 6, 4
     call memoria_game
+    return
 
 label memoria_win:
             show epsilon reporte2 at right
