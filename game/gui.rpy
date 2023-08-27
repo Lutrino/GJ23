@@ -107,7 +107,7 @@ define gui.textbox_yalign = 1.0
 ## Colocación del nombre del personaje hablante, relativa a la caja de texto.
 ## Puede ser el númerode píxels desde la esquina superior izquierda, o 0.5 para
 ## centrar.
-define gui.name_xpos = 192
+define gui.name_xpos = 300
 define gui.name_ypos = 0
 
 ## La alineación horizontal del nombre del personaje. (0.0 es izquierda, 0.5 es
@@ -130,11 +130,11 @@ define gui.namebox_tile = False
 
 ## Colocación del diálogo relativa a la caja de texto. Puede ser el número de
 ## píxels relativos a la esquina superor izquierda o 0.5 para centrar.
-define gui.dialogue_xpos = 215
+define gui.dialogue_xpos = 280
 define gui.dialogue_ypos = 40
 
 ## La anchura máxima del texto del diálogo, en píxels.
-define gui.dialogue_width = 596
+define gui.dialogue_width = 750
 
 ## La alineación horizontal del texto del diálogo. (0.0 es izquierda, 0.5 es
 ## centro, 1.0 es derecha).
