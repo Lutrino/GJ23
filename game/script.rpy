@@ -28,6 +28,8 @@ label splashscreen:
 
     hide text with dissolve
 
+    with Pause(1)
+
     show logo_hyatory_white at truecenter with dissolve
     with Pause(3)
 
