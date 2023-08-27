@@ -172,7 +172,7 @@ label juego2:
     $ ww, hh = 6, 4
     $ flg = 1
     play music "<from 5 to 35>audio/bg/15 - Demolition Runner.mp3" fadeout 0.5 volume 0.5
-    call memoria_game
+    call memoria_game from _call_memoria_game_1
     return
 
 label memoria_win:
@@ -249,7 +249,7 @@ label final_lose:
     scene black
     with Pause(1)
     play music "audio/bg/10 - A Light in the Dark.mp3" fadeout 1.0 noloop
-    show text "El bug fue resuelto... pero... Fue por un el accidente?" with dissolve
+    show text "El bug fue resuelto... pero... Fue por un accidente?" with dissolve
     with Pause(5)
 
     hide text with dissolve
