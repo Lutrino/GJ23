@@ -43,7 +43,7 @@ label start:
 
     narr "Humanos y máquinas coexisten en armonía en Hyatory. Las máquinas realizan tareas tediosas y peligrosas, desde limpieza hasta seguridad, liberando a los humanos para otras labores."
 
-    scene bg_1
+    scene sistema
     
     narr "Hyatory es segura gracias a la vigilancia automatizada. Las calles son seguras y la delincuencia es mínima, permitiendo a los habitantes disfrutar de la vida urbana."
     narr "Este nivel excepcional de seguridad y tranquilidad que se respira en cada rincón de Hyatory es gracias a la introducción de un modelo de robot único(K0-CH)."
@@ -54,11 +54,19 @@ label start:
     telefono "*Ring Ring*"
     with Pause(1)
     stop sound fadeout 0.5
+    show epsilon celular at left
+    with dissolve
 
     Sistema_seguridad "Saludos, detective Epsilon. Lamento la interrupción en su periodo de inactividad"
     Sistema_seguridad "El individuo fallecido ha sido identificado como Federico 506f6e6365, de aproximadamente treinta y cinco años, según los registros disponibles."
 
     epsilon "Agradezco tu notificación, sistema. ¿Puedes brindarme más detalles sobre la víctima?"
+    hide epsilon celular
+    with fade
+    scene bg callejon
+    show epsilon buscando at right
+    with dissolve
+    
     Sistema_seguridad "Federico no presenta antecedentes conocidos en nuestras bases de datos. Hasta ahora, no hay registros de actividad delictiva ni asociaciones relevantes."
 
     epsilon "Entiendo. Prosigue con los detalles sobre la escena del crimen, por favor."
@@ -75,6 +83,47 @@ label start:
 
     narr "El detective analiza la escena del crimen y toma nota de los detalles relevantes."
     narr "Pero algo le llama la atención."
+label juego:
+    #Inicio del Minijuego_Busqueda
+    $ hf_init("bg callejon", 5,
+        ("beer", 100, 200, _("Oso")),
+        ("elf", 800, 200, _("Elfo")),
+        ("flowers", 300, 200, _("Flores")),
+        ("skull", 700, 200, _("Calavera")),
+        ("sprite", 500, 200, _("Gaseosa")),
+        
+        mouse=True,
+        inventory=False,
+        hint=True,
+        hover=brightness(.05),
+        w=100,
+        h=100
+    )
+    $ hf_bg()
+    with dissolve
+
+    centered "{size=+24}Haber si encontras estos 5 Cosos Milenarios.\nManejate!"
+
+    # Inicio del HideF
+    $ hf_start()
+
+    # Stop
+    $ renpy.pause(1, hard=True)
+
+    # Resultado / Gestion del resultado del minijuego
+    if hf_return == 0:
+        centered "{size=+24}Lo hiciste Sorete!"
+    else:
+        centered "{size=+24}GAME OVER\n Te faltaron: [hf_return]."
+    if hf_return > 0:
+        jump juego
+
+
+    $ hf_hide()
+    with dissolve
+    #Fin del Minijuego_busqueda
+    hide epsilon buscando
+    with fade
 
     menu:
         "Las marcas en el cuerpo son perfectas y precisas.":
@@ -100,7 +149,10 @@ label start:
 
 
 label ep2_1:
+    scene bg_1
     epsilon "..."
+    show epsilon2 at left
+    with dissolve
     epsilon "Es hora de regresar a la oficina y analizar las pruebas."
 
     narr "Epsilon regresa a la oficina y analiza las pruebas."
@@ -109,9 +161,14 @@ label ep2_1:
 
     narr "Tras horas de minuciosa inspección y análisis, el detective finalmente conectó los puntos que lo llevaban a una conclusión inquietante."
     narr "Las pruebas sugerían de manera contundente que el acto había sido perpetrado por una máquina. La precisión y la naturaleza clínica del asesinato, junto con las huellas digitales que dejaban una firma única, apuntaban a la intervención de una entidad no humana."
+    
+    hide epsilon2
+    with fade
 
     menu:
         "Todo indica que es una falla del sistema":
+            show epsilon reporte2 at right
+            with dissolve
             narr "La mente del detective se llenó de interrogantes mientras se enfrentaba a esta nueva realidad, una en la que las fronteras entre lo orgánico y lo artificial se desdibujaban de manera perturbadora."
             narr "Cada pista, cada rastro de evidencia, parecía converger en una única y alarmante conclusión: una falla en el sistema era la causa raíz detrás de los sucesos desconcertantes que se estaban desplegando."
             narr "Los patrones anómalos en los registros, los comportamientos erráticos de los dispositivos y las secuencias de eventos aparentemente inexplicables apuntaban hacia una vulnerabilidad en el núcleo del sistema"
@@ -123,6 +180,8 @@ label ep2_1:
             jump ep3_1
 
         "Parece ser que un grupo está detrás de este caso":
+            show epsilon reporte1 at left
+            with dissolve
             narr "Las evidencias que inicialmente señalaban hacia una máquina habían sido manipuladas cuidadosamente por una mente humana. Las huellas digitales digitales que creía únicas resultaron ser un engaño elaborado, y la aparente precisión del asesinato se convirtió en una artimaña calculada para ocultar la verdad."
             narr "La realización de que un ser humano había tejido esta red de engaño le dejó una sensación amarga, recordándole que en el mundo del crimen, la astucia humana podía ser más intrigante y retorcida que cualquier creación tecnológica."
             narr "La fría lógica de la programación de Epsilon ahora luchaba contra la complejidad de los motivos humanos. Mientras sus circuitos analizaban los patrones y las interconexiones, su algoritmo emocional comenzaba a captar la profundidad de esta intriga."
